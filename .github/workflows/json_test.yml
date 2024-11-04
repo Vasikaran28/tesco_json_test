@@ -29,6 +29,6 @@ jobs:
 
     - name: Run JSON validation
       run: |
-        python validate_json.py
+        python json_test_py.py
       env:
         FILE_PATH: 'tests/sample.json'  # Use this if you want to make the file path configurable
