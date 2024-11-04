@@ -27,6 +27,6 @@ def convert_json_to_yaml(json_path, yaml_path):
 
 # Specify the file paths
 json_path = os.path.join('tests', 'sample.json')  # This will point to tests/sample.json
-yaml_path = os.path.join('tests', 'json_to_yml.yml')  # This will point to tests/json_to_yml.yml
+yaml_path = os.path.join('tests', 'json_to_yml_test.yml')  # This will point to tests/json_to_yml.yml
 
 convert_json_to_yaml(json_path, yaml_path)
