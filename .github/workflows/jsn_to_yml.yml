@@ -1,14 +1,14 @@
-name: Validate JSON
+name: JSON to YAML
 
 on:
-#   push:
-#     branches:
-#       - main  # or specify another branch
+  push:
+    branches:
+      - main  # or specify another branch
   pull_request:
   workflow_dispatch:  # Adds a manual trigger option
 
 jobs:
-  validate-json:
+  convert-json-to-yml:
     runs-on: ubuntu-latest
 
     steps:
@@ -26,9 +26,11 @@ jobs:
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
+        pip install pyyaml  # Install PyYAML for JSON to YAML conversion
 
-    - name: Run JSON validation
+    - name: Run JSON to YAML conversion
       run: |
-        python json_test_py.py
+        python json_to_yml.py
       env:
-        FILE_PATH: 'tests/sample.json'  # Use this if you want to make the file path configurable
+        JSON_FILE_PATH: 'tests/sample.json'  # Path to the JSON file
+        YAML_FILE_PATH: 'tests/json_to_yml.yaml'    # Path to save the YAML file
