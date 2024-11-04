@@ -31,6 +31,3 @@ jobs:
     - name: Run JSON to YAML conversion
       run: |
         python json_to_yml.py
-      env:
-        JSON_FILE_PATH: 'tests/sample.json'  # Path to the JSON file
-        YAML_FILE_PATH: 'tests/json_to_yml.yaml'    # Path to save the YAML file

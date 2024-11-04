@@ -9,8 +9,12 @@ def convert_json_to_yaml(json_path, yaml_path):
         with open(json_path, 'r') as json_file:
             data = json.load(json_file)
         
+        print(f"Loaded JSON data from {json_path}: {data}")
+
         # Ensure the output directory exists
-        os.makedirs(os.path.dirname(yaml_path), exist_ok=True)
+        output_dir = os.path.dirname(yaml_path)
+        os.makedirs(output_dir, exist_ok=True)
+        print(f"Output directory checked/created: {output_dir}")
 
         # Write YAML data
         with open(yaml_path, 'w') as yaml_file:
@@ -21,8 +25,8 @@ def convert_json_to_yaml(json_path, yaml_path):
         print(f"Error during conversion: {e}")
         sys.exit(1)
 
-# Get file paths from environment variables
-json_path = os.getenv('JSON_FILE_PATH', 'tests/sample.json')  # Default path if env variable is not set
-yaml_path = os.getenv('YAML_FILE_PATH', 'tests/json_to_yml.yml')  # Default path if env variable is not set
+# Specify the file paths
+json_path = os.path.join('tests', 'sample.json')  # This will point to tests/sample.json
+yaml_path = os.path.join('tests', 'json_to_yml.yml')  # This will point to tests/json_to_yml.yml
 
 convert_json_to_yaml(json_path, yaml_path)
