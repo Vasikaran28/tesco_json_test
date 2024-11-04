@@ -1,0 +1,34 @@
+name: Validate JSON
+
+on:
+  push:
+    branches:
+      - main  # or specify another branch
+  pull_request:
+  workflow_dispatch:  # Adds a manual trigger option
+
+jobs:
+  validate-json:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.10'  # Specify Python version
+
+    - name: List files in the repository
+      run: ls -R  # Lists all files and directories recursively
+
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+
+    - name: Run JSON validation
+      run: |
+        python validate_json.py
+      env:
+        FILE_PATH: 'tests/sample.json'  # Use this if you want to make the file path configurable
